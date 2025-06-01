@@ -1,0 +1,78 @@
+day 3 :
+
+-- Create and use database
+CREATE DATABASE school;
+USE school;
+
+-- Create student table
+CREATE TABLE student(
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(40),
+    student_marks INT,
+    student_age INT
+);
+
+-- Create teacher table
+CREATE TABLE teacher(
+    teacher_id INT PRIMARY KEY,
+    teacher_name VARCHAR(40),
+    teacher_department VARCHAR(40),
+    teacher_age INT
+);
+
+-- Create subject table
+CREATE TABLE subject(
+    subject_id INT PRIMARY KEY,
+    subject_name VARCHAR(40),
+    subject_modules INT,
+    subject_teacher VARCHAR(40)
+);
+
+-- Insert sample data into student table
+INSERT INTO student (student_id, student_name, student_marks, student_age) VALUES
+(1, 'Aarav Sharma', 87, 19),
+(2, 'Priya Patel', 92, 20),
+(3, 'Rohit Gupta', 78, 21),
+(4, 'Sneha Reddy', 95, 18),
+(5, 'Vikram Singh', 83, 22),
+(6, 'Kavya Nair', 89, 19),
+(7, 'Arjun Mehta', 76, 20),
+(8, 'Ananya Das', 94, 18),
+(9, 'Karan Joshi', 81, 21),
+(10, 'Riya Agarwal', 88, 19);
+
+-- Insert sample data into teacher table
+INSERT INTO teacher (teacher_id, teacher_name, teacher_department, teacher_age) VALUES
+(1, 'Rajesh Kumar', 'Computer Science', 35),
+(2, 'Meera Jain', 'Mathematics', 42),
+(3, 'Suresh Iyer', 'Physics', 38),
+(4, 'Pooja Khanna', 'Chemistry', 45),
+(5, 'Amit Verma', 'Biology', 40),
+(6, 'Divya Sinha', 'Computer Science', 33),
+(7, 'Ravi Pandey', 'Mathematics', 37),
+(8, 'Sunita Rao', 'Physics', 41),
+(9, 'Deepak Mishra', 'Chemistry', 39),
+(10, 'Lakshmi Pillai', 'Biology', 44);
+
+-- Insert sample data into subject table
+INSERT INTO subject (subject_id, subject_name, subject_modules, subject_teacher) VALUES
+(1, 'Data Structures', 6, 'Rajesh Kumar'),
+(2, 'Calculus I', 8, 'Meera Jain'),
+(3, 'Quantum Physics', 10, 'Suresh Iyer'),
+(4, 'Organic Chemistry', 12, 'Pooja Khanna'),
+(5, 'Cell Biology', 9, 'Amit Verma'),
+(6, 'Algorithms', 7, 'Divya Sinha'),
+(7, 'Linear Algebra', 6, 'Ravi Pandey'),
+(8, 'Thermodynamics', 8, 'Sunita Rao'),
+(9, 'Biochemistry', 11, 'Deepak Mishra'),
+(10, 'Genetics', 10, 'Lakshmi Pillai');
+
+-- Display all data
+SELECT 'STUDENT TABLE' AS table_name;
+SELECT * FROM student;
+
+SELECT 'TEACHER TABLE' AS table_name;
+SELECT * FROM teacher;
+
+SELECT 'SUBJECT TABLE' AS table_name;
+SELECT * FROM subject;

@@ -76,3 +76,18 @@ SELECT * FROM teacher;
 
 SELECT 'SUBJECT TABLE' AS table_name;
 SELECT * FROM subject;
+
+DESC student;
+
+
+ALTER TABLE student DROP COLUMN phone;
+
+
+ALTER TABLE student ADD COLUMN s_country VARCHAR(10) DEFAULT 'India';
+
+
+UPDATE student SET student_name = 'Sneha reddy' WHERE student_name = 'Priya Patel';
+
+
+SELECT 'STUDENT TABLE AFTER ALTER OPERATIONS' AS table_name;
+SELECT * FROM student;

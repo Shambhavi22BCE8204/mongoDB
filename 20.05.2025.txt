@@ -1,0 +1,80 @@
+create database store;
+use store;
+create table category( c_id int primary key, c_name varchar(40), c_details varchar(25));
+insert into category values(101, 'electronics','abc');
+insert into category values(102, 'furnitures','sjkl');
+select * from category;
+drop table products;
+create table products(
+p_id int primary key,
+p_name varchar(25),
+p_details varchar(35),
+c_id int,
+foreign key products(c_id) references category(c_id)
+);
+delete from category where c_id=101;
+drop table category;
+INSERT INTO products VALUES
+(1, 'TV', 'SONY', 101),
+(2, 'TV', 'SONY', 101),         
+(3, 'Sofa', 'Leather', 102);
+select * from products;
+delete from category where c_id=101;
+update products set c_id=103 where c_id=101;
+update category set c_id=104 where c_id=101;
+
+CREATE DATABASE store;
+USE store;
+
+CREATE TABLE category (
+    c_id INT PRIMARY KEY,
+    c_name VARCHAR(40),
+    c_details VARCHAR(25)
+);
+
+INSERT INTO category VALUES (101, 'electronics', 'abc');
+INSERT INTO category VALUES (102, 'furnitures', 'sjkl');
+
+CREATE TABLE products (
+    p_id INT PRIMARY KEY,
+    p_name VARCHAR(25),
+    p_details VARCHAR(35),
+    c_id INT,
+    FOREIGN KEY (c_id) REFERENCES category(c_id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+INSERT INTO products VALUES
+(1, 'TV', 'SONY', 101),
+(2, 'TV', 'SONY', 101),
+(3, 'Sofa', 'Leather', 102);
+
+SELECT * FROM products;
+SELECT * FROM category;
+
+DELETE FROM category WHERE c_id = 101;
+
+UPDATE category SET c_id = 104 WHERE c_id = 101;
+
+CREATE TABLE client_records (
+    first_name VARCHAR(40) NOT NULL,
+    middle_name VARCHAR(40) NOT NULL,
+    last_name VARCHAR(40) NOT NULL,
+    client_id INT UNIQUE,
+    nationality VARCHAR(35) DEFAULT 'Nepal'
+);
+
+INSERT INTO client_records (first_name, middle_name, last_name, client_id) 
+VALUES ('Ritika', 'A.', 'Singh', 207);
+
+SELECT * FROM client_records;
+
+ALTER TABLE client_records ADD PRIMARY KEY (client_id);
+
+SHOW CREATE TABLE client_records;
+
+ALTER TABLE client_records DROP PRIMARY KEY;
+
+ALTER TABLE client_records DROP INDEX client_id;
+

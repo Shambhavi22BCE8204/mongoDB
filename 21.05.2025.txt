@@ -1,0 +1,64 @@
+create database vit;
+use vit;
+show tables;
+CREATE TABLE worker (
+    worker_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    salary INT,
+    joining_date DATETIME,
+    department VARCHAR(50)
+);
+
+INSERT INTO worker VALUES
+(1, 'Amy', 'Sharma', 120000, '2015-03-10 09:00:00', 'HR'),
+(2, 'Pooja', 'Verma', 95000, '2016-05-15 09:00:00', 'Admin'),
+(3, 'Neha', 'Gupta', 110000, '2017-01-20 09:00:00', 'Finance'),
+(4, 'Kiran', 'Kumar', 70000, '2015-09-30 09:00:00', 'IT'),
+(5, 'Vishu', 'Agarwal', 130000, '2018-07-22 09:00:00', 'HR'),
+(6, 'Arjun', 'Singh', 80000, '2019-11-12 09:00:00', 'Finance');
+
+
+select * from worker where worker_id in (1,2);
+select * from worker where worker_id not in (1,2);
+select * from worker where salary between 100000 and 200000;
+select * from worker where salary not between 100000 and 200000;
+select * from worker where salary between 100000 and 300000 and (worker_id in (1,2,3,4));
+select min(salary) from worker;
+select max(salary) from worker;
+select sum(salary) from worker;
+select avg(salary) from worker;
+#union 
+select department from worker1;
+
+select department from worker
+UNION all
+select department from worker1;
+
+select * from worker1 where worker_id in (1,2,3);
+
+select * from worker where worker_id in (101,102,103);
+select * from worker1 where salary<=200000 order by salary;
+select * from worker1 where salary<=200000 order by salary desc;
+select * from worker1 where first_name like '_i%i';
+select * from worker1 where first_name like '__p%';
+select * from worker1 where first_name like '%m_a';
+select * from worker1 where first_name like '_ia%';
+select * from worker1 where first_name like 'M%' or first_name like 'N%';
+
+Select first_name ,salary,
+CASE
+    When salary>300000 THEN "Rich people"
+    When salary <=300000 && salary>=100000 THEN "MIDDLE CLASS"
+    When salary <=100000  && Salary >=0 then "POOR CLASS"
+    ELSE "Data not found"
+END
+as Status_checksalary
+from worker;
+select * from worker;
+select * from worker where salary<=200000 order by salary;
+
+create view admin_team as select * from worker1 where department='Admin' and salary<100000;
+create or replace view admin_team as select * from worker1 where department='Admin' and salary>200000;
+select * from admin_team;
+drop view admin_team;
